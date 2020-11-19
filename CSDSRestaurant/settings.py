@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'restaurantPage.apps.RestaurantpageConfig',
     'login.apps.LoginConfig',
+    'register.apps.RegisterConfig',
+    'homepage.apps.HomepageConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
