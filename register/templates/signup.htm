@@ -3,35 +3,48 @@
 <body>
 <head>
 <title>Your Private Restaurant Designer</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <!-- Main Content Body -->
-<div>
-              <h1 class="cw-signin-h1">Welcome to Your Private Restaurant Designer!</h1>
-            </div> 
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary" style="background:#f50040">
+  <a style="color:white;" class="navbar-brand" href="#">Welcome to Your Private Restaurant Designer!</a>
+</nav> 
                   <!-- Restaurant Name -->
-                  <div class="form-group"> <span class="ps_label-show" id="ptLabelRestaurantName">
-                    <label for="userid">Restaurant Name</label>
+                  <div class="form-group">
+		<div class="col-md-3 col-md-offset-1"> 
+		<span class="ps_label-show" id="ptLabelRestaurantName">
+                    <label class="col-xs-3 text-right" for="userid">Restaurant Name</label>
                     </span>
-                    <input type="text" class="form-control" id="restaurantName" name="restaurantName" title="Restaurant Name" autofocus>
+                    <input type="text" class="form-control" style="width:210px;" id="restaurantName" name="restaurantName" title="Restaurant Name" autofocus>
                   </div>
+		</div>
 		<!-- Email address -->
-                  <div class="form-group"> <span class="ps_label-show" id="ptLabelEmail">
-                    <label for="userid">Email Address</label>
+                  <div class="form-group">
+		<div class="col-md-3 col-md-offset-1">
+		<span class="ps_label-show" id="ptLabelEmail">
+                    <label class="col-xs-3 text-right" for="userid">Email Address</label>
                     </span>
-                    <input type="text" class="form-control" id="email" name="email" title="Email Address" autofocus>
+                    <input type="text" class="form-control" style="width:210px;" id="email" name="email" title="Email Address" autofocus>
                   </div>
+		</div>
                   <!-- Password -->
-                  <div class="form-group"><span class="ps_label-show" id="ptLabelPassword">
-                    <label for="pwd">Password</label>
+                  <div class="form-group">
+		<div class="col-md-3 col-md-offset-1">
+		<span class="ps_label-show" id="ptLabelPassword">
+                    <label class="col-xs-3 text-right" for="pwd">Password</label>
                     </span>
-                    <input type="password" class="form-control" id="pwd" name="pwd" title="Password" >
+                    <input type="password" class="form-control" style="width:210px;" id="pwd" name="pwd" title="Password" >
                   </div>
+		</div>
 		<!-- Confirm Password -->
-                  <div class="form-group"><span class="ps_label-show" id="ptLabelConfirmPassword">
-                    <label for="pwd">Confirm Password</label>
+                  <div class="form-group">
+		<div class="col-md-3 col-md-offset-1">
+		<span class="ps_label-show" id="ptLabelConfirmPassword">
+                    <label class="col-xs-3 text-right" for="pwd">Confirm Password</label>
                     </span>
-                    <input type="password" class="form-control" id="confirmPwd" name="confirmPwd" title="Password" >
+                    <input type="password" class="form-control" style="width:210px;" id="confirmPwd" name="confirmPwd" title="Password" >
                   </div>
+		</div>
                   <!-- Sign Up Button -->
                   <div style="text-align:center;">
                     <input name="Sign up" type="submit" class="btn btn-primary" value="Sign up">
