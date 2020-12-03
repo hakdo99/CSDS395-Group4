@@ -108,19 +108,19 @@
               <a style="color:white;" class="nav-link" href="{% url "login" %}">Undo</a>
 
             </span>
-            <button class="openbtn nav-link" onclick="openNav()">Add Section</button>
+            <button class="openbtn nav-link" onclick="openNav()">Option</button>
           </div>
         </li>
       </ul>
     </div>
   </nav>
+
   <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     <div class="accordion">
-      <a data-toggle="collapse" href="#addoptions" role="button" aria-expanded="false" aria-controls="addoptions">Add
-        Section</a>
+      <a data-toggle="collapse" href="#addoptions" role="button" aria-expanded="false" aria-controls="addoptions">Option</a>
       <div class="collapse card-body" id="addoptions">
-        <a data-toggle="modal" data-target="#addModalVideo">Video</a>
+        <a data-toggle="modal" data-target="#addModalLinkButton">Account Link Button</a>
         <a data-toggle="modal" data-target="#addModalText">Text</a>
         <a data-toggle="modal" data-target="#addModalImage">Image</a>
       </div>
@@ -128,14 +128,14 @@
   </div>
 
   <!-- Recommend splitting this into separate html files when integrate to django -->
-  <!-- Video -->
+  <!-- Link Button -->
 
-  <div class="modal fade" id="addModalVideo" tabindex="-1" role="dialog" aria-labelledby="addModalVideo"
+  <div class="modal fade" id="addModalLinkButton" tabindex="-1" role="dialog" aria-labelledby="addModalLinkButton"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="addModalLabel">Video</h5>
+          <h5 class="modal-title" id="addModalLabel">Account Links</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -143,56 +143,24 @@
         <div class="modal-body">
           <!-- put more code here -->
 
-          <!-- Video Link URL -->
+          <!-- Account Link -->
           <div class="col-md-3 col-md-offset-1">
-            <span class="ps_label-show" id="ptVideoLink">
-              <label class="col-xs-3 text-right" for="videoLink">Link:</label>
+            <span class="ps_label-show" id="ptAccountLink">
+              <label class="col-xs-3 text-right" for="accountLink">Link:</label>
             </span>
-            <input type="url" class="form-control" style="width:240px;" id="videoLink" name="videoLink" title="Link:"
+            <input type="url" class="form-control" style="width:240px;" id="accountLink" name="accountLink" title="Link:"
               autofocus>
           </div>
-          <!--Browse -->
+          
+          <!-- Button name -->
           <div class="col-md-3 col-md-offset-1">
-            <span class="ps_label-show" id="ptVideoLink">
-              <label class="col-xs-3 text-right" for="videoLink">or</label>
-              <button type="button" class="btn btn-outline-info">Browse</button>
+            <span class="ps_label-show" id="ptButtonName">
+              <label class="col-xs-3 text-right" for="accountLink">Text</label>
             </span>
+            <input type="text" class="form-control" style="width:240px;" id="buttonName" name="buttonName" title="Text:"
+              autofocus>
           </div>
-          <!-- Position -->
-          <div class="position">
-            <br>
-            <legend class="col-form-label col-sm-2 pt-0">Position:</legend>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="posInput" id="leftPosition" value="radio1">
-              <label class="form-check-label" for="leftPosition">
-                Left
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="posInput" id="rightPosition" value="radio2">
-              <label class="form-check-label" for="rightPosition">
-                Right
-              </label>
-            </div>
-          </div>
-          <div class="size">
-            <br>
-            <legend class="col-form-label col-sm-2 pt-0">Size:</legend>
-            <div class="form-group row">
-              <label for="colFormLabel" class="col-sm-2 col-form-label">Height:</label>
-              <div class="col-sm-2">
-                <input type="number" class="form-control" style="width:65px;" id="colFormLabel">
-              </div>
-              <p class="col-sm-2" style="display:inline">px</p>
-            </div>
-            <div class="form-group row">
-              <label for="colFormLabel" class="col-sm-2 col-form-label">Width:</label>
-              <div class="col-sm-2">
-                <input type="number" class="form-control" style="width:65px;" id="colFormLabel">
-              </div>
-              <p class="col-sm-2" style="display:inline">px</p>
-            </div>
-          </div>
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -224,28 +192,7 @@
             <form>
               <textarea class="form-control" style="width:445px; height:110px"></textarea>
             </form>            
-          </div>
-
-          <!---->
-
-          <!-- Position -->
-          <div class="position">
-            <br>
-            <legend class="col-form-label col-sm-2 pt-0">Position:</legend>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="posInput" id="leftPosition" value="radio1" checked>
-              <label class="form-check-label" for="leftPosition">
-                Left
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="posInput" id="rightPosition" value="radio2">
-              <label class="form-check-label" for="rightPosition">
-                Right
-              </label>
-            </div>
-          </div>
-
+          </div>        
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -284,23 +231,7 @@
               <button type="button" class="btn btn-outline-info">Browse</button>
             </span>
           </div>
-          <!-- Position -->
-          <div class="position">
-            <br>
-            <legend class="col-form-label col-sm-2 pt-0">Position:</legend>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="posInput" id="leftPosition" value="radio1" checked>
-              <label class="form-check-label" for="leftPosition">
-                Left
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="posInput" id="rightPosition" value="radio2">
-              <label class="form-check-label" for="rightPosition">
-                Right
-              </label>
-            </div>
-          </div>
+          
           <!--Size-->
           <div class="size">
             <br>
