@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Your private restaurant designer</title>
+    <title>Your Private Restaurant Designer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
@@ -169,25 +169,27 @@
                 </div>
                 <div class="modal-body">
                     <!-- put more code here -->
-
                     <!-- Account Link -->
-                    <div class="col-md-3 col-md-offset-1">
-                        <span class="ps_label-show" id="ptAccountLink">
-                            <label class="col-xs-3 text-right" for="accountLink">Link:</label>
-                        </span>
-                        <input type="url" class="form-control" style="width:240px;" id="accountLink" name="accountLink"
-                            title="Link:" autofocus>
-                    </div>
+                    <form action=" " method="post">
+                        <div class="col-md-3 col-md-offset-1">
+                            <span class="ps_label-show" id="ptAccountLink">
+                                <label class="col-xs-3 text-right" for="accountLink">Link:</label>
+                            </span>
+                            <input type="url" class="form-control" style="width:240px;" id="accountLink"
+                                name="accountLink" title="Link:" autofocus>
+                        </div>
+                    </form>
 
                     <!-- Button name -->
-                    <div class="col-md-3 col-md-offset-1">
-                        <span class="ps_label-show" id="ptButtonName">
-                            <label class="col-xs-3 text-right" for="accountLink">Text</label>
-                        </span>
-                        <input type="text" class="form-control" style="width:240px;" id="buttonName" name="buttonName"
-                            title="Text:" autofocus>
-                    </div>
-
+                    <form action=" " method="post">
+                        <div class="col-md-3 col-md-offset-1">
+                            <span class="ps_label-show" id="ptButtonName">
+                                <label class="col-xs-3 text-right" for="accountLink">Text</label>
+                            </span>
+                            <input type="text" class="form-control" style="width:240px;" id="buttonName"
+                                name="buttonName" title="Text:" autofocus>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" onclick="createButton()" data-dismiss="modal">Create
@@ -212,14 +214,16 @@
                 <div class="modal-body">
                     <!-- put more code here -->
                     <!-- Text -->
-                    <div class="col-md-3 col-md-offset-1">
-                        <span class="ps_label-show" id="ptText">
-                            <label class="col-xs-3 text-right" for="text">Text:</label>
-                        </span>
-                        <form>
-                            <textarea class="form-control" style="width:445px; height:110px"></textarea>
-                        </form>
-                    </div>
+                    <form action=" " method="post">
+                        <div class="col-md-3 col-md-offset-1">
+                            <span class="ps_label-show" id="ptText">
+                                <label class="col-xs-3 text-right" for="text">Text:</label>
+                            </span>
+                            <form>
+                                <textarea class="form-control" style="width:445px; height:110px"></textarea>
+                            </form>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
@@ -243,48 +247,55 @@
                 <div class="modal-body">
                     <!-- put more code here -->
                     <!-- Image Link URL -->
-                    <div class="col-md-3 col-md-offset-1">
-                        <span class="ps_label-show" id="ptImageLink">
-                            <label class="col-xs-3 text-right" for="imageLink">Link URL:</label>
-                        </span>
-                        <input type="url" class="form-control" style="width:240px;" id="imageLink" name="imageLink"
-                            title="Link:" autofocus>
-                    </div>
+                    <form action=" " method="post">
+                        <div class="col-md-3 col-md-offset-1">
+                            <span class="ps_label-show" id="ptImageLink">
+                                <label class="col-xs-3 text-right" for="imageLink">Link URL:</label>
+                            </span>
+                            <input type="url" class="form-control" style="width:240px;" id="imageLink" name="imageLink"
+                                title="Link:" autofocus>
+                        </div>
+                    </form>
 
                     <!--Browse -->
-                    <div class="col-md-3 col-md-offset-1">
-                        <span class="ps_label-show" id="ptImageLink">
-                            <label class="col-xs-3 text-right" for="imageLink">or</label>
-                            <!--<p>or</p>-->
-                            <div id="fakeDiv">
-                                <input type="file" id="selectedFile" accept="image/*" />
-                                <input type="text" id="fakeInput" />
-                                <button type="button" class="btn btn-outline-info" id="browseButton"
-                                    onclick="document.getElementById('selectedFile').click();">Browse</button>
-                            </div>
-                        </span>
-                    </div>
+                    <form action=" " method="post">
+                        <div class="col-md-3 col-md-offset-1">
+                            <span class="ps_label-show" id="ptImageLink">
+                                <label class="col-xs-3 text-right" for="imageLink">or</label>
+                                <!--<p>or</p>-->
+                                <div id="fakeDiv">
+                                    <input type="file" id="selectedFile" accept="image/*" />
+                                    <input type="text" id="fakeInput" />
+                                    <button type="button" class="btn btn-outline-info" id="browseButton"
+                                        onclick="document.getElementById('selectedFile').click();">Browse</button>
+                                </div>
+                            </span>
+                        </div>
+                    </form>
 
                     <!--Size-->
-                    <div class="size">
-                        <br>
-                        <legend class="col-form-label col-sm-2 pt-0">Size:</legend>
-                        <div class="form-group row">
-                            <label for="colFormLabel" class="col-sm-2 col-form-label">Height:</label>
-                            <div class="col-sm-2">
-                                <input type="number" class="form-control" style="width:65px;" id="colFormLabel">
+                    <form action=" " method="post">
+                        <div class="size">
+                            <br>
+                            <legend class="col-form-label col-sm-2 pt-0">Size:</legend>
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-2 col-form-label">Height:</label>
+                                <div class="col-sm-2">
+                                    <input type="number" class="form-control" style="width:65px;" id="colFormLabel">
+                                </div>
+                                <p class="col-sm-2" style="display:inline">px</p>
                             </div>
-                            <p class="col-sm-2" style="display:inline">px</p>
-                        </div>
-                        <div class="form-group row">
-                            <label for="colFormLabel" class="col-sm-2 col-form-label">Width:</label>
-                            <div class="col-sm-2">
-                                <input type="number" class="form-control" style="width:65px;" id="colFormLabel">
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-2 col-form-label">Width:</label>
+                                <div class="col-sm-2">
+                                    <input type="number" class="form-control" style="width:65px;" id="colFormLabel">
+                                </div>
+                                <p class="col-sm-2" style="display:inline">px</p>
                             </div>
-                            <p class="col-sm-2" style="display:inline">px</p>
                         </div>
-                    </div>
+                    </form>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
                 </div>
