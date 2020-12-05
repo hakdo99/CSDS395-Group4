@@ -58,6 +58,30 @@
       padding: 16px;
     }
 
+    #fakeInput {
+      width: 50%;
+      background-color: #f8f8f8;
+      border-radius: 8px;
+      display: block;
+      padding: 11px 0;
+      box-sizing: border-box;
+      border: initial;
+      height: 3em;
+    }
+
+    #selectedFile {
+      opacity: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    #fakeDiv {
+      width: 500px;
+      position: relative;
+      display: inline-block;
+    }
+
     /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
     @media screen and (max-height: 450px) {
       .sidebar {
@@ -153,9 +177,15 @@
           </div>
           <!--Browse -->
           <div class="col-md-3 col-md-offset-1">
-            <span class="ps_label-show" id="ptVideoLink">
-              <label class="col-xs-3 text-right" for="videoLink">or</label>
-              <button type="button" class="btn btn-outline-info">Browse</button>
+            <span class="ps_label-show" id="ptImageLink">
+              <label class="col-xs-3 text-right" for="imageLink">or</label>
+              <!--<p>or</p>-->
+              <div id="fakeDiv">
+                <input type="file" id="selectedFile" accept="video/*" />
+                <input type="text" id="fakeInput" />
+                <button type="button" class="btn btn-outline-info"
+                  onclick="document.getElementById('selectedFile').click();">Browse</button>
+              </div>
             </span>
           </div>
           <!-- Position -->
@@ -223,7 +253,7 @@
             </span>
             <form>
               <textarea class="form-control" style="width:445px; height:110px"></textarea>
-            </form>            
+            </form>
           </div>
 
           <!---->
@@ -281,7 +311,13 @@
           <div class="col-md-3 col-md-offset-1">
             <span class="ps_label-show" id="ptImageLink">
               <label class="col-xs-3 text-right" for="imageLink">or</label>
-              <button type="button" class="btn btn-outline-info">Browse</button>
+              <!--<p>or</p>-->
+              <div id="fakeDiv">
+                <input type="file" id="selectedFile" accept="image/*" />
+                <input type="text" id="fakeInput" />
+                <button type="button" class="btn btn-outline-info"
+                  onclick="document.getElementById('selectedFile').click();">Browse</button>
+              </div>
             </span>
           </div>
           <!-- Position -->
@@ -323,7 +359,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
         </div>
       </div>
     </div>
@@ -346,6 +382,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
   <!-- <img src="image1.png" alt="image" width="550" height="500" border="5"> 
 
@@ -364,6 +401,11 @@
       document.getElementById("mySidebar").style.width = "0";
       document.getElementById("sidebar_zone").style.marginLeft = "0";
     }
+
+    $('#selectedFile').change(function chooseFile() {
+      var a = $('#selectedFile').val().toString().split('\\');
+      $('#fakeInput').val(a[a.length - 1]);
+    });
   </script>
 </body>
 
