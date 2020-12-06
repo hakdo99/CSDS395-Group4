@@ -167,8 +167,9 @@
         <div class="modal-body">
           <!-- put more code here -->
 
-          <!-- Video Link URL -->
+
           <!-- insert action below -->
+          <!-- Video Link URL -->
           <form action=" " method="post">
             <div class="col-md-3 col-md-offset-1">
               <span class="ps_label-show" id="ptVideoLink">
@@ -177,10 +178,10 @@
               <input type="url" class="form-control" style="width:240px;" id="videoLink" name="videoLink" title="Link:"
                 autofocus>
             </div>
-          </form>
-          <!--Browse -->
-          <!-- insert action below -->
-          <form action=" " method="post">
+
+            <!--Browse -->
+            <!-- insert action below -->
+
             <div class="col-md-3 col-md-offset-1">
               <span class="ps_label-show" id="ptImageLink">
                 <label class="col-xs-3 text-right" for="imageLink">or</label>
@@ -193,9 +194,9 @@
                 </div>
               </span>
             </div>
-          </form>
-          <!-- Position -->
-          <form action=" " method="post">
+
+            <!-- Position -->
+
             <div class="position">
               <br>
               <legend class="col-form-label col-sm-2 pt-0">Position:</legend>
@@ -212,9 +213,9 @@
                 </label>
               </div>
             </div>
-          </form>
-          <!-- Size -->
-          <form action=" " method="post">
+
+            <!-- Size -->
+
             <div class="size">
               <br>
               <legend class="col-form-label col-sm-2 pt-0">Size:</legend>
@@ -257,8 +258,9 @@
         </div>
         <div class="modal-body">
           <!-- put more code here -->
-          <!-- Text -->
+
           <form action=" " method="post">
+            <!-- Text -->
             <div class="col-md-3 col-md-offset-1">
               <span class="ps_label-show" id="ptText">
                 <label class="col-xs-3 text-right" for="text">Text:</label>
@@ -267,11 +269,9 @@
                 <textarea class="form-control" style="width:445px; height:110px"></textarea>
               </form>
             </div>
-          </form>
-          <!---->
 
-          <!-- Position -->
-          <form action=" " method="post">
+            <!-- Position -->
+
             <div class="position">
               <br>
               <legend class="col-form-label col-sm-2 pt-0">Position:</legend>
@@ -312,8 +312,8 @@
         </div>
         <div class="modal-body">
           <!-- put more code here -->
-          <!-- Image Link URL -->
           <form action="" method="post">
+            <!-- Image Link URL -->
             <div class="col-md-3 col-md-offset-1">
               <span class="ps_label-show" id="ptImageLink">
                 <label class="col-xs-3 text-right" for="imageLink">Link URL:</label>
@@ -323,59 +323,59 @@
             </div>
           </form>
           <!--Browse -->
-          <form action="" method="post">
-            <div class="col-md-3 col-md-offset-1">
-              <span class="ps_label-show" id="ptImageLink">
-                <label class="col-xs-3 text-right" for="imageLink">or</label>
-                <!--<p>or</p>-->
-                <div id="fakeDiv">
-                  <input type="file" id="selectedFile" accept="image/*" />
-                  <input type="text" id="fakeInput" />
-                  <button type="button" class="btn btn-outline-info"
-                    onclick="document.getElementById('selectedFile').click();">Browse</button>
-                </div>
-              </span>
-            </div>
-          </form>
+
+          <div class="col-md-3 col-md-offset-1">
+            <span class="ps_label-show" id="ptImageLink">
+              <label class="col-xs-3 text-right" for="imageLink">or</label>
+              <!--<p>or</p>-->
+              <div id="fakeDiv">
+                <input type="file" id="selectedFile" accept="image/*" />
+                <input type="text" id="fakeInput" />
+                <button type="button" class="btn btn-outline-info"
+                  onclick="document.getElementById('selectedFile').click();">Browse</button>
+              </div>
+            </span>
+          </div>
+
           <!-- Position -->
-          <form action="" method="post">
-            <div class="position">
-              <br>
-              <legend class="col-form-label col-sm-2 pt-0">Position:</legend>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="posInput" id="leftPosition" value="radio1" checked>
-                <label class="form-check-label" for="leftPosition">
-                  Left
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="posInput" id="rightPosition" value="radio2">
-                <label class="form-check-label" for="rightPosition">
-                  Right
-                </label>
-              </div>
+
+          <div class="position">
+            <br>
+            <legend class="col-form-label col-sm-2 pt-0">Position:</legend>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="posInput" id="leftPosition" value="radio1" checked>
+              <label class="form-check-label" for="leftPosition">
+                Left
+              </label>
             </div>
-          </form>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="posInput" id="rightPosition" value="radio2">
+              <label class="form-check-label" for="rightPosition">
+                Right
+              </label>
+            </div>
+          </div>
+
           <!--Size-->
-          <form action="" method="post">
-            <div class="size">
-              <br>
-              <legend class="col-form-label col-sm-2 pt-0">Size:</legend>
-              <div class="form-group row">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">Height:</label>
-                <div class="col-sm-2">
-                  <input type="number" class="form-control" style="width:65px;" id="colFormLabel">
-                </div>
-                <p class="col-sm-2" style="display:inline">px</p>
+
+          <div class="size">
+            <br>
+            <legend class="col-form-label col-sm-2 pt-0">Size:</legend>
+            <div class="form-group row">
+              <label for="colFormLabel" class="col-sm-2 col-form-label">Height:</label>
+              <div class="col-sm-2">
+                <input type="number" class="form-control" style="width:65px;" id="colFormLabel">
               </div>
-              <div class="form-group row">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">Width:</label>
-                <div class="col-sm-2">
-                  <input type="number" class="form-control" style="width:65px;" id="colFormLabel">
-                </div>
-                <p class="col-sm-2" style="display:inline">px</p>
-              </div>
+              <p class="col-sm-2" style="display:inline">px</p>
             </div>
+            <div class="form-group row">
+              <label for="colFormLabel" class="col-sm-2 col-form-label">Width:</label>
+              <div class="col-sm-2">
+                <input type="number" class="form-control" style="width:65px;" id="colFormLabel">
+              </div>
+              <p class="col-sm-2" style="display:inline">px</p>
+            </div>
+          </div>
           </form>
         </div>
         <div class="modal-footer">

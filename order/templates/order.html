@@ -130,7 +130,7 @@
 
                             <a style="color:white;" class="nav-link" href="{% url "logout" %}">Logout</a>
 
-                            <a style="color:white;" class="nav-link" href="{% url "login" %}">Undo</a>
+                            <a style="color:white;" class="nav-link" href="{% url "undo" %}">Undo</a>
 
                         </span>
                         <button class="openbtn nav-link" onclick="openNav()">Option</button>
@@ -168,9 +168,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- put more code here -->
-                    <!-- Account Link -->
+
                     <form action=" " method="post">
+                        <!-- Account Link -->
                         <div class="col-md-3 col-md-offset-1">
                             <span class="ps_label-show" id="ptAccountLink">
                                 <label class="col-xs-3 text-right" for="accountLink">Link:</label>
@@ -178,16 +178,24 @@
                             <input type="url" class="form-control" style="width:240px;" id="accountLink"
                                 name="accountLink" title="Link:" autofocus>
                         </div>
-                    </form>
 
-                    <!-- Button name -->
-                    <form action=" " method="post">
+
+                        <!-- Button name -->
                         <div class="col-md-3 col-md-offset-1">
                             <span class="ps_label-show" id="ptButtonName">
-                                <label class="col-xs-3 text-right" for="accountLink">Text</label>
+                                <label class="col-xs-3 text-right" for="accountLink">Text:</label>
                             </span>
                             <input type="text" class="form-control" style="width:240px;" id="buttonName"
                                 name="buttonName" title="Text:" autofocus>
+                        </div>
+
+
+                        <!-- Button color -->
+                        <div class="col-md-3 col-md-offset-1">
+                            <span class="ps_label-show" id="ptButtonColor">
+                                <label class="col-xs-3 text-right" for="accountLink">Color:</label>
+                            </span>
+                            <input type="color" id="buttonColor" name="buttonColor" value="#ff0000">
                         </div>
                     </form>
                 </div>
@@ -246,8 +254,8 @@
                 </div>
                 <div class="modal-body">
                     <!-- put more code here -->
-                    <!-- Image Link URL -->
                     <form action=" " method="post">
+                        <!-- Image Link URL -->
                         <div class="col-md-3 col-md-offset-1">
                             <span class="ps_label-show" id="ptImageLink">
                                 <label class="col-xs-3 text-right" for="imageLink">Link URL:</label>
@@ -255,10 +263,10 @@
                             <input type="url" class="form-control" style="width:240px;" id="imageLink" name="imageLink"
                                 title="Link:" autofocus>
                         </div>
-                    </form>
 
-                    <!--Browse -->
-                    <form action=" " method="post">
+
+                        <!--Browse -->
+
                         <div class="col-md-3 col-md-offset-1">
                             <span class="ps_label-show" id="ptImageLink">
                                 <label class="col-xs-3 text-right" for="imageLink">or</label>
@@ -271,10 +279,10 @@
                                 </div>
                             </span>
                         </div>
-                    </form>
 
-                    <!--Size-->
-                    <form action=" " method="post">
+
+                        <!--Size-->
+
                         <div class="size">
                             <br>
                             <legend class="col-form-label col-sm-2 pt-0">Size:</legend>
