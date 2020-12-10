@@ -24,4 +24,5 @@ urlpatterns = [
     path('register/', include('register.urls')),
     path('create/', include('restaurantCreate.urls')),
     path('restaurant/', include('restaurantPage.urls')),
+    path('menu/', include('resMenu.urls')),
 ]
