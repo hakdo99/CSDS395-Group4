@@ -4,9 +4,12 @@ from django.template import loader
 
 
 # Create your views here.
+
 def login(request):
-    template = loader.get_template('ind.htm')
-    return HttpResponse(template.render())
+    return render(request, 'index.htm', {'section': 'login'})
+
+def logout(request):
+    return render(request, 'logout.html', {'section': 'logout'})
 
 def forgotPassword(request):
     return HttpResponse("password recovery page")
