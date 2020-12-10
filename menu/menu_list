@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Menu List</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <div class="menu">
+            <h2>Our Menu</h2>
+            <ul>
+                <li>
+                    <lable>
+                        <input type="checkbox" name="">
+                        <span class="icon"></span>
+                        <span class="list">
+                            Fried Fish With Source</
+                            span>
+                    </lable>
+                </li>
+                <li>
+                    <lable>
+                        <input type="checkbox" name="">
+                        <span class="icon"></span>
+                        <span class="list">
+                            Orange Chicken</
+                            span>
+                    </lable>
+                </li>
+                <li>
+                    <lable>
+                        <input type="checkbox" name="">
+                        <span class="icon"></span>
+                        <span class="list">
+                            Neapolitan pizza</
+                            span>
+                    </lable>
+                </li>
+                <li>
+                    <lable>
+                        <input type="checkbox" name="">
+                        <span class="icon"></span>
+                        <span class="list">
+                            Sushi</
+                            span>
+                    </lable>
+                </li>
+                <li>
+                    <lable>
+                        <input type="checkbox" name="">
+                        <span class="icon"></span>
+                        <span class="list">
+                            Peking duck</
+                            span>
+                    </lable>
+                </li>
+                <li>
+                    <lable>
+                        <input type="checkbox" name="">
+                        <span class="icon"></span>
+                        <span class="list">
+                            Penang assam laksa</
+                            span>
+                    </lable>
+                </li>
+                <li>
+                    <lable>
+                        <input type="checkbox" name="">
+                        <span class="icon"></span>
+                        <span class="list">
+                            Tom yum goong</
+                            span>
+                    </lable>
+                </li>
+                <li>
+                    <lable>
+                        <input type="checkbox" name="">
+                        <span class="icon"></span>
+                        <span class="list">
+                            Goi cuon (summer roll)</
+                            span>
+                    </lable>
+                </li>
+                <li>
+                    <lable>
+                        <input type="checkbox" name="">
+                        <span class="icon"></span>
+                        <span class="list">
+                            Piri-piri chicken</
+                            span>
+                    </lable>
+                </li>
+            </ul>    
+        </div>
+    </body>
+</html>
