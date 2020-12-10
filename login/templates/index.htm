@@ -38,7 +38,9 @@
 		</div>
 	</div>
 	<!-- Sign In Button -->
-	<form action=" " method="post">
+	<form action="." method="post">
+		{{ form.as_p }}
+    	{% csrf_token %}
 		<div style="text-align:center;">
 			<input name="Sign in" type="submit" class="btn btn-primary" style="width:170px;" value="Sign in"
 				aria-label='To enable screen reader mode, please check the checkbox "Enable Screen Reader Mode" before you sign in. Sign In'>

@@ -4,10 +4,8 @@ from django.template import loader
 
 
 # Create your views here.
-
 def mainPage(request):
-    template = loader.get_template('homepage.html')
-    return HttpResponse(template.render())
+    return render(request, 'homepage.html', {'section': 'homepage'})
 
 def restaurantView(request):
     return HttpResponse("Restaurant manager homepage")
