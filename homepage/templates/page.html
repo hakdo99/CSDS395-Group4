@@ -1,0 +1,13 @@
+{% for section in sects %}
+    {% if section.tag == 'div'%}
+        {% if section.children.all|length %}
+            <div name="{{section.id}}">
+                {% include "page.html" with sects=section.children.all %}
+            </div>
+        {% endif %}
+    {% endif %}
+    {% if section.tag == 'video'%}
+        <iframe width="{{section.width}}" height="{{section.height}}" src="{{section.link}}">
+        </iframe>
+    {% endif %}
+{% endfor %}
