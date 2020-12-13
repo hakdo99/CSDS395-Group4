@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'register.apps.RegisterConfig',
     'homepage.apps.HomepageConfig',
     'resMenu.apps.ResmenuConfig',
+    'order.apps.OrderConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
