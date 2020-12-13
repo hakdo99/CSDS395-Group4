@@ -110,7 +110,7 @@
               class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a style="color:white;" class="nav-link" href="../../order/templates/order.html">Order</a>
+          <a style="color:white;" class="nav-link" href="#">Order</a>
         </li>
         <li class="nav-item">
           <a style="color:white;" class="nav-link" href="#">Location</a>
@@ -385,7 +385,7 @@
     </div>
   </div>
 
-  <div id = "section">
+  <div id="section">
 
   </div>
 
@@ -397,7 +397,7 @@
   </div>
 
   <div id="page">
-  {% include 'page.html' %}
+    {% include 'page.html' %}
   </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -417,17 +417,17 @@
       $.ajax({
         type: 'GET',
         url: "/addsect",
-        success : function(json) {
+        success: function (json) {
           document.getElementById("mySidebar").style.width = "450px";
           document.getElementById("sidebar_zone").style.marginLeft = "450px";
           $('#page').load(
-              "{% url 'getSections' %}"
+            "{% url 'getSections' %}"
           );
         }
       })
       // document.getElementById("mySidebar").style.width = "450px";
       // document.getElementById("sidebar_zone").style.marginLeft = "450px";
-      
+
     }
 
     function closeNav() {
@@ -435,21 +435,21 @@
       document.getElementById("sidebar_zone").style.marginLeft = "0";
     }
 
-    function submitVideo(){
+    function submitVideo() {
       $.ajax({
         type: 'POST',
         url: "/addvid",
         data: {
-            link : $('#videoLink').val(),
-            width : $('#colWidth').val(),
-            height: $('#colHeight').val(),
-            sect_id: "{{ curr_sect }}",
-            csrfmiddlewaretoken: '{{ csrf_token }}',
-            dataType: "json"
+          link: $('#videoLink').val(),
+          width: $('#colWidth').val(),
+          height: $('#colHeight').val(),
+          sect_id: "{{ curr_sect }}",
+          csrfmiddlewaretoken: '{{ csrf_token }}',
+          dataType: "json"
         },
-        success : function(json) {
+        success: function (json) {
           $('#page').load(
-              "{% url 'getSections' %}"
+            "{% url 'getSections' %}"
           );
         }
       })
@@ -460,7 +460,7 @@
       $('#fakeInput').val(a[a.length - 1]);
     });
 
-  
+
   </script>
 </body>
 
