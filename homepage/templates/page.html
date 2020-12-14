@@ -1,13 +1,19 @@
 {% for section in sects %}
     {% if section.tag == 'div'%}
         {% if section.children.all|length %}
-            <div name="{{section.id}}">
+            <div class="csds-user-added" name="{{section.id}}" id="{{section.id}}">
                 {% include "page.html" with sects=section.children.all %}
             </div>
         {% endif %}
     {% endif %}
     {% if section.tag == 'video'%}
-        <iframe width="{{section.width}}" height="{{section.height}}" src="{{section.link}}">
+        <iframe id="{{section.id}}" class="csds-user-added" width="{{section.width}}" height="{{section.height}}" src="{{section.link}}">
         </iframe>
     {% endif %}
 {% endfor %}
+<script>
+    $('.csds-user-added').bind('contextmenu', function(e){
+            selectedElement = e.currentTarget.id;
+            console.log(selectedElement)
+    });
+</script>
