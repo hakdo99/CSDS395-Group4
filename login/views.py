@@ -21,6 +21,9 @@ def forgotPassword(request):
 
     return render(request, 'forgetpassword.html', {'section': 'forgetpassword'})
 
+def resetPassword(request):
+    return render(request, 'resetpassword.html', {'section': 'logout'})
+
 
 def user_login(request):
     if request.method == 'POST':
