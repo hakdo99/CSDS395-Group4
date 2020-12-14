@@ -4,8 +4,9 @@ from django.contrib.auth.models import User
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    userid = forms.CharField()
+    pwd = forms.CharField(widget=forms.PasswordInput)
+    #Sign_in_token = forms.CharField(max_length=50)
 
 
 class UserRegistrationForm(forms.ModelForm):
@@ -16,7 +17,7 @@ class UserRegistrationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'email')
+        fields = ('email', 'password')
 
     def clean_password2(self):
         cd = self.cleaned_data

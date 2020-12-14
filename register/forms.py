@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(max_length=100)
+    password = forms.CharField(widget=forms.PasswordInput, max_length=100)
 
 
 class UserRegistrationForm(forms.ModelForm):
@@ -23,3 +23,8 @@ class UserRegistrationForm(forms.ModelForm):
         if cd['password'] != cd['password2']:
             raise forms.ValidationError('Passwords don\'t match.')
         return cd['password2']
+
+
+class passwordChangeForm(forms.Form):
+    email = forms.CharField(max_length=100)
+    found_accounts=User
