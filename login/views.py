@@ -13,6 +13,9 @@ def login(request):
 def logout(request):
     return render(request, 'logout.html', {'section': 'logout'})
 
+def resetPassword(request):
+    return render(request, 'resetpassword.html', {'section': 'logout'})
+
 def forgotPassword(request):
     return HttpResponse("password recovery page")
 
