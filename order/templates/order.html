@@ -96,6 +96,19 @@
 </head>
 
 <body>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.js"></script>
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary" style="background:#f50040">
         <a style="color:white;" class="navbar-brand" href="/">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -169,7 +182,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <form action=" " method="post">
+                    <form action=" " method="post" onSubmit="onAddButton()">
                         <!-- Account Link -->
                         <div class="col-md-3 col-md-offset-1">
                             <span class="ps_label-show" id="ptAccountLink">
@@ -190,18 +203,11 @@
                         </div>
 
 
-                        <!-- Button color -->
-                        <div class="col-md-3 col-md-offset-1">
-                            <span class="ps_label-show" id="ptButtonColor">
-                                <label class="col-xs-3 text-right" for="accountLink">Color:</label>
-                            </span>
-                            <input type="color" id="buttonColor" name="buttonColor" value="#ff0000">
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Create
+                                    button</button>
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="createButton()" data-dismiss="modal">Create
-                        button</button>
                 </div>
             </div>
         </div>
@@ -311,10 +317,14 @@
         </div>
     </div>
 
-    <a href=document.getElementById("accountLink").value>
+    {% comment %} <a href=document.getElementById("accountLink").value>
         <div style="text-align: center;" id="buttonPos1">
         </div>
-    </a>
+    </a> {% endcomment %}
+
+    <div id="page">
+        {% include 'order_page.html' %}
+    </div>
 
 
     <div id="header">
@@ -324,25 +334,24 @@
     <div id="content">
     </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-
-    <!-- <img src="image1.png" alt="image" width="550" height="500" border="5"> 
-
-<img src="image2.png" alt="image" width="550" height="500" border="5"> 
-
-<img src="image3.png" alt="image" width="550" height="500" border="5"> 
-
-<img src="right_arrow.png" alt="image" width="200" height="200" border="5"> -->
     <script>
+        function onAddButton(){
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'addButton' %}",
+                data: {
+                    link: $('#accountLink').val(),
+                    text: $('#buttonName').val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    dataType: "json"
+                },
+                success: function (json) {
+                    $('#page').load(
+                        "{% url 'getOrderSections' %}"
+                    );
+                }
+            })
+        }
         // open navigation bar
         function openNav() {
             document.getElementById("mySidebar").style.width = "450px";
@@ -377,6 +386,50 @@
             $('#fakeInput').val(a[a.length - 1]);
         });
 
+        var selectedElement = null;
+
+        $(function() {
+            $.contextMenu({
+                selector: '.csds-user-added', 
+                callback: function(key, options, e) {
+                    console.log('callback', key + " " + selectedElement);
+                    // assumption: selectedElement != null, and should be the right clicked element
+                    // delete calls here
+                    if(key == "delete"){
+                        $.ajax({
+                            type: 'POST',
+                            url: "{% url 'deleteSections' %}",
+                            data: {
+                                id: selectedElement,
+                                csrfmiddlewaretoken: '{{ csrf_token }}',
+                                dataType: "json"
+                            },
+                            success: function (json) {
+                                selectedElement = null;
+                                $('#page').load(
+                                    "{% url 'getOrderSections' %}"
+                                );
+                            }
+                        })
+                    }
+                },
+                items: {
+                    "edit": {name: "Edit", icon: "edit"},
+                    "cut": {name: "Cut", icon: "cut"},
+                copy: {name: "Copy", icon: "copy"},
+                    "delete": {name: "Delete", icon: "delete"},
+                    "sep1": "---------",
+                    "quit": {name: "Quit", icon: function(){
+                        return 'context-menu-icon context-menu-icon-quit';
+                    }}
+                }
+            });  
+        });
+
+        $('.csds-user-added').bind('contextmenu', (e) => {
+            selectedElement = e.currentTarget.id;
+            console.log(selectedElement)
+        });
     </script>
 </body>
 

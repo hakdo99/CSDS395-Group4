@@ -1,0 +1,17 @@
+{% for section in sects %}
+    {% if section.tag == 'button'%}
+        <div class="col text-center">
+            <button class="csds-user-added btn btn-info mt-5" onclick="parent.open('{{section.link}}')" id="{{section.id}}">
+                <div style="text-align: center;">
+                    {{section.text}}
+                </div>
+            </button>
+        </div>
+    {% endif %}
+{% endfor %}
+<script>
+    $('.csds-user-added').bind('contextmenu', function(e){
+            selectedElement = e.currentTarget.id;
+            console.log(selectedElement)
+    });
+</script>
