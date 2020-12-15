@@ -147,7 +147,7 @@
         <li class="nav-item">
           <div id="sidebar_zone">
             <span class="user">
-
+              <a style="color:white; margin-right:15px" class="nav-link">Hello, {{ request.user.username }}</a>
               <a style="color:white;" class="nav-link" href="{% url "login" %}">Logout</a>
               <a style="color:white;" class="nav-link" href="{% url 'resetPassword' %}">Reset password</a>              
 
