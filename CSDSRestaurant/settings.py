@@ -32,9 +32,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'register',
     'restaurantPage.apps.RestaurantpageConfig',
     'login.apps.LoginConfig',
-    'register.apps.RegisterConfig',
     'homepage.apps.HomepageConfig',
     'resMenu.apps.ResmenuConfig',
     'order.apps.OrderConfig',
@@ -54,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'django.middlewareclickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'CSDSRestaurant.urls'
@@ -106,7 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -126,6 +127,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -142,3 +145,5 @@ LOGGING = {
         },
     },
 }
+AUTH_USER_MODEL = 'register.CustomUser'
+

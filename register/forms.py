@@ -1,30 +1,37 @@
   
 from django import forms
-from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from restaurantPage.models import Restaurant
+from django.contrib.auth import get_user_model
 
 
-class LoginForm(forms.Form):
-    username = forms.CharField(max_length=100)
-    password = forms.CharField(widget=forms.PasswordInput, max_length=100)
 
 
-class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(label='Password',
-                                widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repeat password',
-                                widget=forms.PasswordInput)
+class UserRegistrationForm(UserCreationForm):
 
     class Meta:
-        model = User
-        fields = ('username', 'first_name', 'email')
+        model = get_user_model()
+        fields = ('email', 'accountRestaurant')
 
-    def clean_password2(self):
+"""def clean_password2(self):
         cd = self.cleaned_data
-        if cd['password'] != cd['password2']:
+        if cd['pwd'] != cd['confirmPwd']:
             raise forms.ValidationError('Passwords don\'t match.')
-        return cd['password2']
+        return cd['confirmPwd']
 
+    def makeAccount(self, name, id, password):
+        User=User.create(name,id,password)
+        if User is not None:
+            User.save()
+        else:
+            print('user creation unsuccessful')
+        userRes = Restaurant.create(name, User)
+        if userRes is not None:
+            userRes.save()
+            return User
+        else:
+            Print('restaurant creation unsuccessful')"""
 
 class passwordChangeForm(forms.Form):
     email = forms.CharField(max_length=100)
-    found_accounts=User
+    #found_accounts=User

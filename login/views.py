@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from .forms import LoginForm
 from django.contrib.auth import authenticate, login
-from register.models import User
+from register.models import CustomUser
 
 
 # Create your views here.
@@ -38,7 +38,7 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect('login/loggedin/')
+                    return redirect('loggedin/')
                 else:
                     return HttpResponse('Disabled account')
             else:

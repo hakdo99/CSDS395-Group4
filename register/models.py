@@ -1,31 +1,41 @@
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
-from django.utils import timezone
-from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 
-# Create your models here.
+class CustomUserManager(BaseUserManager):
+    """Define a model manager for User model with no username field."""
 
-class PublishedManager(models.Manager):
-    def get_queryset(self):
-        return super(PublishedManager,
-                     self).get_queryset()
+    def _create_user(self, email, password, **extra_fields):
+        """Create and save a User with the given email and password."""
+        if not email:
+            raise ValueError('The given email must be set')
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        if extra_fields.get('name') is not None:
+            raise ValueError('the restaurant name must be given')
 
-class User(models.Model):
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
 
-    username = models.FloatField(null=True, blank=True, default=None)
-    password = models.FloatField(null=True, blank=True, default=None)
-    email = models.CharField(max_length=250)
-    restaurant = models.ForeignKey(User, on_delete=models.CASCADE,
-                                    related_name='restaurant')
-    publish = models.DateTimeField(default=timezone.now)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    def create_user(self, email, password=None, **extra_fields):
+        return self._create_user(email, password, **extra_fields)
 
-    objects = models.Manager()
-    published = PublishedManager()
+    def create_superuser(self, email, password=None, **extra_fields):
+        """Create and save a SuperUser with the given email and password."""
+        extra_fields.setdefault('is_staff', True)
 
-    class Meta:
-        ordering = ('name',)
-        app_label = 'YourPrivateRestaurantDesigner'
+        extra_fields.setdefault('is_superuser', True)
 
-    def __str__(self):
-        return self.username
+        return self._create_user(email, password, **extra_fields)
+
+
+class CustomUser(AbstractUser):
+    username = None
+    email = models.EmailField(_('email address'), unique=True)
+    accountRestaurant = models.CharField(max_length = 200)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    objects = CustomUserManager()
