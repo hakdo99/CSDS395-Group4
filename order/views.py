@@ -31,5 +31,8 @@ def delete_sections(request):
     else:
         return None
 
+def render_preview(request):
+    return render(request, 'rendered_order.html', {'section': 'order', 'sects': Section.objects.all()})
+
 
 

@@ -46,3 +46,16 @@ def addVideo(request):
 
 def restaurantView(request):
     return HttpResponse("Restaurant manager homepage")
+
+def deleteSection(request):
+    if request.method == "POST" and request.is_ajax():
+        current_id = request.POST.get('id', None)
+        print(current_id)
+        current_sect = Section.objects.filter(id=current_id)
+        current_sect.delete()
+        return render(request, 'page.html', {'section': 'order', 'sects': Section.objects.all()})
+    else:
+        return None
+    
+def render_preview(request):
+    return render(request, 'rendered_homepage.html', {'section': 'order', 'sects': Section.objects.filter(tag='div')})

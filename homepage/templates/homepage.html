@@ -92,10 +92,28 @@
         font-size: 18px;
       }
     }
+
+    .csds-user-added:hover{
+      background-color: #FFF8DC;
+    }
   </style>
 </head>
 
 <body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.js"></script>
+
   <nav class="navbar navbar-expand-lg navbar-light bg-secondary" style="background:#f50040">
     <a style="color:white;" class="navbar-brand" href="#">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -106,7 +124,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a style="color:white;" class="nav-link" href="{% url "mainPage" %}">Menu <span
+          <a style="color:white;" class="nav-link" href="{% url "basicmenu" %}">Menu <span
               class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
@@ -118,6 +136,9 @@
         <li class="nav-item">
           <a style="color:white;" class="nav-link" href="#">More</a>
         </li>
+        <li class="nav-item">
+          <button class="openbtn nav-link" onclick="parent.open('{% url 'renderPreview'%}')">Preview</button>
+        </li>
       </ul>
     </div>
 
@@ -126,9 +147,9 @@
         <li class="nav-item">
           <div id="sidebar_zone">
             <span class="user">
-
+              <a style="color:white; margin-right:15px" class="nav-link">Hello, {{ request.user.username }}</a>
               <a style="color:white;" class="nav-link" href="{% url "login" %}">Logout</a>
-
+              <a style="color:white;" class="nav-link" href="{% url 'resetPassword' %}">Reset password</a>              
 
             </span>
             <button class="openbtn nav-link" onclick="openNav()">Add Section</button>
@@ -400,16 +421,7 @@
     {% include 'page.html' %}
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 
 
   <script>
@@ -460,6 +472,50 @@
       $('#fakeInput').val(a[a.length - 1]);
     });
 
+     var selectedElement = null;
+
+        $(function() {
+            $.contextMenu({
+                selector: '.csds-user-added', 
+                callback: function(key, options, e) {
+                    console.log('callback', key + " " + selectedElement);
+                    // assumption: selectedElement != null, and should be the right clicked element
+                    // delete calls here
+                    if(key == "delete"){
+                        $.ajax({
+                            type: 'POST',
+                            url: "{% url 'deleteHomepageSections' %}",
+                            data: {
+                                id: selectedElement,
+                                csrfmiddlewaretoken: '{{ csrf_token }}',
+                                dataType: "json"
+                            },
+                            success: function (json) {
+                                selectedElement = null;
+                                $('#page').load(
+                                    "{% url 'getSections' %}"
+                                );
+                            }
+                        })
+                    }
+                },
+                items: {
+                    "edit": {name: "Edit", icon: "edit"},
+                    "cut": {name: "Cut", icon: "cut"},
+                copy: {name: "Copy", icon: "copy"},
+                    "delete": {name: "Delete", icon: "delete"},
+                    "sep1": "---------",
+                    "quit": {name: "Quit", icon: function(){
+                        return 'context-menu-icon context-menu-icon-quit';
+                    }}
+                }
+            });  
+        });
+
+        $('.csds-user-added').bind('contextmenu', (e) => {
+            selectedElement = e.currentTarget.id;
+            console.log(e)
+        });
 
   </script>
 </body>

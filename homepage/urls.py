@@ -9,4 +9,6 @@ urlpatterns = [
     path('addvid', views.addVideo, name='addVideo'),
     path('sections', views.getSections, name='getSections'),
     path('', user_login, name='initialPage'),
+    path('deletesects', views.deleteSection, name='deleteHomepageSections'),
+    path('render',views.render_preview, name='renderPreview')
 ]
