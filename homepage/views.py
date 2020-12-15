@@ -56,3 +56,6 @@ def deleteSection(request):
         return render(request, 'page.html', {'section': 'order', 'sects': Section.objects.all()})
     else:
         return None
+    
+def render_preview(request):
+    return render(request, 'rendered_homepage.html', {'section': 'order', 'sects': Section.objects.filter(tag='div')})

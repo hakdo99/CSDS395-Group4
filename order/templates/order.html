@@ -113,7 +113,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.js"></script>
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary" style="background:#f50040">
-        <a style="color:white;" class="navbar-brand" href="/">Home</a>
+        <a style="color:white;" class="navbar-brand" href="{% url "mainPage" %}">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -135,6 +135,9 @@
                 <li class="nav-item">
                     <a style="color:white;" class="nav-link" href="#">More</a>
                 </li>
+                <li class="nav-item">
+                    <button class="openbtn nav-link" onclick="parent.open('{% url 'renderPreview'%}')">Preview</button>
+                </li>
             </ul>
         </div>
 
@@ -144,6 +147,7 @@
                     <div id="sidebar_zone">
                         <span class="user">
                             <a style="color:white;" class="nav-link" href="{% url "login" %}">Logout</a>
+                            <a style="color:white;" class="nav-link" href="{% url 'resetPassword' %}">Reset password</a>              
                         </span>
                         <button class="openbtn nav-link" onclick="openNav()">Option</button>
                     </div>
